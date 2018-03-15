@@ -37,6 +37,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Hylasoft.Resolution.0.1.5\lib\net45\Hylasoft.Resolution.dll</HintPath>
     </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.4.4.13\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="OmniColour, Version=0.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\OmniColour.0.0.2\lib\net45\OmniColour.dll</HintPath>
@@ -52,12 +55,14 @@
   <ItemGroup>
     <Compile Include="Configuration\HLoggingLevels.cs" />
     <Compile Include="Configuration\IHConsoleLogConfiguration.cs" />
+    <Compile Include="Configuration\IHFileLogConfiguration.cs" />
     <Compile Include="Configuration\IHLoggingConfiguration.cs" />
     <Compile Include="Constants\ConfigurationDefaults.cs" />
     <Compile Include="IHLogger.cs" />
     <Compile Include="Loggers\Base\HLogger.cs" />
     <Compile Include="Loggers\HConsoleLogger.cs" />
     <Compile Include="Configuration\HLoggingDecorations.cs" />
+    <Compile Include="Loggers\HFileLogger.cs" />
     <Compile Include="LoggingIssue.cs" />
     <Compile Include="LoggingResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,10 +9,13 @@ namespace Hylasoft.Logging.Console
   class Program
   {
     private static IHLogger _logger;
+    private static IHLogger _fileLogger;
     private static IColourWriter _writer;
     private static IHConsoleLogConfiguration _config;
 
     private static IHLogger Logger { get { return _logger ?? (_logger = BuildLogger()); } }
+
+    private static IHLogger FileLogger { get { return _fileLogger ?? (_fileLogger = BuildFileLogger()); } }
 
     private static IColourWriter Writer { get { return _writer ?? (_writer = BuildWriter()); } }
 
@@ -28,6 +31,7 @@ namespace Hylasoft.Logging.Console
       test += Result.SingleFatal("Test fatal.");
 
       Logger.LogSynchronous(test);
+      FileLogger.LogSynchronous(test);
 
       var inline = Result.SingleInfo("Woah.");
       var inlineMessage = Writer.Message;
@@ -39,11 +43,18 @@ namespace Hylasoft.Logging.Console
       inline += Result.SingleWarning("There it was.");
 
       Logger.LogSynchronous(inline);
+      FileLogger.LogSynchronous(inline);
     }
 
     private static IHLogger BuildLogger()
     {
       return new HConsoleLogger(Config, Writer);
+    }
+
+    private static IHLogger BuildFileLogger()
+    {
+      var config = new FileConfig();
+      return new HFileLogger(config);
     }
 
     private static IColourWriter BuildWriter()

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Linq;
 using Hylasoft.Logging.Configuration;
-using Hylasoft.Logging.Constants;
 using Hylasoft.Logging.Loggers.Base;
 using Hylasoft.Logging.Resources;
 using Hylasoft.Resolution;
 using OmniColour;
 using OmniColour.Messages;
 using OmniColour.Writers;
+
+using ConfigDefaults = Hylasoft.Logging.Constants.ConfigurationDefaults.Console;
 
 namespace Hylasoft.Logging.Loggers
 {
@@ -67,7 +68,7 @@ namespace Hylasoft.Logging.Loggers
       if (HasDecoration(HLoggingDecorations.OmmitDate))
         return Result.Success;
 
-      var format = ReadConfig(c => c.TimestampFormat, ConfigurationDefaults.TimestampFormat);
+      var format = ReadConfig(c => c.TimestampFormat, ConfigDefaults.TimestampFormat);
       message.AppendFormat("({0}) ", issue.Date.ToString(format));
 
       return Result.Success;
