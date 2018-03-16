@@ -1,6 +1,6 @@
 ﻿namespace Hylasoft.Logging.Configuration
 {
-  public interface IHMessageLogConfiguration : IHLoggingConfiguration
+  public interface IHMessageLogConfig : IHLoggingConfig
   {
     string TimestampFormat { get; }
   }

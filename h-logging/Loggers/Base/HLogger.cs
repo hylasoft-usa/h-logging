@@ -2,13 +2,14 @@
 using System.Linq;
 using System.Threading;
 using Hylasoft.Logging.Configuration;
+using Hylasoft.Logging.Resolution;
 using Hylasoft.Logging.Resources;
 using Hylasoft.Resolution;
 
 namespace Hylasoft.Logging.Loggers.Base
 {
   public abstract class HLogger<TConfig> : IHLogger
-    where TConfig : IHLoggingConfiguration
+    where TConfig : IHLoggingConfig
   {
     private readonly TConfig _config;
 

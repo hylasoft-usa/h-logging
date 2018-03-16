@@ -1,5 +1,6 @@
 ﻿using Hylasoft.Logging.Configuration;
 using Hylasoft.Logging.Loggers;
+using Hylasoft.Logging.Resolution;
 using Hylasoft.Resolution;
 using OmniColour;
 using OmniColour.Writers;
@@ -11,7 +12,7 @@ namespace Hylasoft.Logging.Console
     private static IHLogger _logger;
     private static IHLogger _fileLogger;
     private static IColourWriter _writer;
-    private static IHConsoleLogConfiguration _config;
+    private static IConsoleLogConfig _config;
 
     private static IHLogger Logger { get { return _logger ?? (_logger = BuildLogger()); } }
 
@@ -19,7 +20,7 @@ namespace Hylasoft.Logging.Console
 
     private static IColourWriter Writer { get { return _writer ?? (_writer = BuildWriter()); } }
 
-    private static IHConsoleLogConfiguration Config { get { return _config ?? (_config = BuildConfig()); } }
+    private static IConsoleLogConfig Config { get { return _config ?? (_config = BuildConfig()); } }
 
     static void Main(string[] args)
     {
@@ -66,7 +67,7 @@ namespace Hylasoft.Logging.Console
       return Colour.Writer;
     }
 
-    private static IHConsoleLogConfiguration BuildConfig()
+    private static IConsoleLogConfig BuildConfig()
     {
       return new LoggingConfig
       {

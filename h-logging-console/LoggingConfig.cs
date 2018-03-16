@@ -2,7 +2,7 @@
 
 namespace Hylasoft.Logging.Console
 {
-  public class LoggingConfig : IHConsoleLogConfiguration
+  public class LoggingConfig : IConsoleLogConfig
   {
     public HLoggingLevels Level { get; set; }
 

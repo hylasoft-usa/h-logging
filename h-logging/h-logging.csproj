@@ -54,10 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\HLoggingLevels.cs" />
-    <Compile Include="Configuration\IHConsoleLogConfiguration.cs" />
-    <Compile Include="Configuration\IHFileLogConfiguration.cs" />
-    <Compile Include="Configuration\IHLoggingConfiguration.cs" />
-    <Compile Include="Configuration\IHMessageLogConfiguration.cs" />
+    <Compile Include="Configuration\IConsoleLogConfig.cs" />
+    <Compile Include="Configuration\IFileLogConfig.cs" />
+    <Compile Include="Configuration\IHLoggingConfig.cs" />
+    <Compile Include="Configuration\IHMessageLogConfig.cs" />
     <Compile Include="Constants\ConfigurationDefaults.cs" />
     <Compile Include="IHLogger.cs" />
     <Compile Include="Loggers\Base\HLogger.cs" />
@@ -65,8 +65,10 @@
     <Compile Include="Loggers\HConsoleLogger.cs" />
     <Compile Include="Configuration\HLoggingDecorations.cs" />
     <Compile Include="Loggers\HFileLogger.cs" />
-    <Compile Include="LoggingIssue.cs" />
-    <Compile Include="LoggingResult.cs" />
+    <Compile Include="Loggers\Interfaces\IConsoleLogger.cs" />
+    <Compile Include="Loggers\Interfaces\IFileLogger.cs" />
+    <Compile Include="Resolution\LoggingIssue.cs" />
+    <Compile Include="Resolution\LoggingResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Warnings.Designer.cs">
       <AutoGen>True</AutoGen>

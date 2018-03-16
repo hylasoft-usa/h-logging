@@ -2,7 +2,7 @@
 
 namespace Hylasoft.Logging.Console
 {
-  public class FileConfig : IHFileLogConfiguration
+  public class FileConfig : IFileLogConfig
   {
     public HLoggingLevels Level { get; set; }
     public HLoggingDecorations Decorations { get; set; }
