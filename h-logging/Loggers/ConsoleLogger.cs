@@ -1,5 +1,5 @@
 ﻿using System;
-using Hylasoft.Logging.Configuration;
+using Hylasoft.Logging.Configuration.Interfaces;
 using Hylasoft.Logging.Loggers.Base;
 using Hylasoft.Logging.Loggers.Interfaces;
 using Hylasoft.Resolution;
@@ -8,7 +8,7 @@ using OmniColour.Writers;
 
 namespace Hylasoft.Logging.Loggers
 {
-  public class HConsoleLogger : HMessageLogger<IConsoleLogConfig>, IConsoleLogger
+  public class ConsoleLogger : ResultMessageLogger<IConsoleLogConfig>, IConsoleLogger
   {
     private readonly IColourWriter _writer;
 
@@ -17,7 +17,7 @@ namespace Hylasoft.Logging.Loggers
       get { return _writer; }
     }
 
-    public HConsoleLogger(IConsoleLogConfig config, IColourWriter writer)
+    public ConsoleLogger(IConsoleLogConfig config, IColourWriter writer)
       : base(config)
     {
       _writer = writer;

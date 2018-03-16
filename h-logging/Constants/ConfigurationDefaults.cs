@@ -1,7 +1,15 @@
-﻿namespace Hylasoft.Logging.Constants
+﻿using Hylasoft.Logging.Configuration;
+
+namespace Hylasoft.Logging.Constants
 {
   internal static class ConfigurationDefaults
   {
+    public const bool VerboseOnError = true;
+
+    public const HLoggingLevels Level = HLoggingLevels.Standard;
+
+    public const HLoggingDecorations Decorations = HLoggingDecorations.All;
+
     internal static class Messages
     {
       public const string TimestampFormat = "HH:mm:ss";

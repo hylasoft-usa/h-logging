@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Hylasoft.Logging.Configuration;
+using Hylasoft.Logging.Configuration.Interfaces.Base;
 using Hylasoft.Logging.Resolution;
 using Hylasoft.Logging.Resources;
 using Hylasoft.Resolution;
@@ -11,10 +12,10 @@ using ConfigDefaults = Hylasoft.Logging.Constants.ConfigurationDefaults.Messages
 
 namespace Hylasoft.Logging.Loggers.Base
 {
-  public abstract class HMessageLogger<TConfig> : HLogger<TConfig>
-    where TConfig : IHMessageLogConfig
+  public abstract class ResultMessageLogger<TConfig> : ResultLogger<TConfig>
+    where TConfig : IResultMessageLogConfig
   {
-    protected HMessageLogger(TConfig config) : base(config)
+    protected ResultMessageLogger(TConfig config) : base(config)
     {
     }
 

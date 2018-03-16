@@ -1,4 +1,5 @@
 ﻿using Hylasoft.Logging.Configuration;
+using Hylasoft.Logging.Configuration.Interfaces;
 using Hylasoft.Logging.Loggers;
 using Hylasoft.Logging.Resolution;
 using Hylasoft.Resolution;
@@ -9,20 +10,20 @@ namespace Hylasoft.Logging.Console
 {
   class Program
   {
-    private static IHLogger _logger;
-    private static IHLogger _fileLogger;
+    private static IResultLogger _logger;
+    private static IResultLogger _fileLogger;
     private static IColourWriter _writer;
     private static IConsoleLogConfig _config;
 
-    private static IHLogger Logger { get { return _logger ?? (_logger = BuildLogger()); } }
+    private static IResultLogger Logger { get { return _logger ?? (_logger = BuildLogger()); } }
 
-    private static IHLogger FileLogger { get { return _fileLogger ?? (_fileLogger = BuildFileLogger()); } }
+    private static IResultLogger FileLogger { get { return _fileLogger ?? (_fileLogger = BuildFileLogger()); } }
 
     private static IColourWriter Writer { get { return _writer ?? (_writer = BuildWriter()); } }
 
     private static IConsoleLogConfig Config { get { return _config ?? (_config = BuildConfig()); } }
 
-    static void Main(string[] args)
+    static void Main()
     {
       var test = Result.SingleTrace("Test trace.");
       test += Result.SingleDebug("Test debug.");
@@ -42,24 +43,22 @@ namespace Hylasoft.Logging.Console
 
       inline += LoggingResult.SingleInfo(0, inlineMessage);
       inline += Result.SingleWarning("There it was.");
+      inline += Result.SingleTrace("And there it went.");
 
       Logger.LogSynchronous(inline);
       FileLogger.LogSynchronous(inline);
     }
 
-    private static IHLogger BuildLogger()
+    private static IResultLogger BuildLogger()
     {
-      return new HConsoleLogger(Config, Writer);
+      return new ConsoleLogger(Config, Writer);
     }
 
-    private static IHLogger BuildFileLogger()
+    private static IResultLogger BuildFileLogger()
     {
-      var config = new FileConfig
-      {
-        Level = HLoggingLevels.Verbose
-      };
+      var config = new FileConfig();
 
-      return new HFileLogger(config);
+      return new FileLogger(config);
     }
 
     private static IColourWriter BuildWriter()

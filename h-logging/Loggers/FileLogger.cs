@@ -1,5 +1,5 @@
 ﻿using System;
-using Hylasoft.Logging.Configuration;
+using Hylasoft.Logging.Configuration.Interfaces;
 using Hylasoft.Logging.Loggers.Base;
 using Hylasoft.Logging.Loggers.Interfaces;
 using Hylasoft.Resolution;
@@ -12,7 +12,7 @@ using ConfigDefaults = Hylasoft.Logging.Constants.ConfigurationDefaults.Messages
 
 namespace Hylasoft.Logging.Loggers
 {
-  public class HFileLogger : HMessageLogger<IFileLogConfig>, IFileLogger
+  public class FileLogger : ResultMessageLogger<IFileLogConfig>, IFileLogger
   {
     private readonly LogFactory _logFactory;
     private readonly LoggingConfiguration _logConfig;
@@ -27,7 +27,7 @@ namespace Hylasoft.Logging.Loggers
 
     protected string LogName { get { return _logName; } }
 
-    public HFileLogger(IFileLogConfig config)
+    public FileLogger(IFileLogConfig config)
       : base(config)
     {
       _logName = ConfigDefaults.FileTargetName;

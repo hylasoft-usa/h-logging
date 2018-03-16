@@ -54,17 +54,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\HLoggingLevels.cs" />
-    <Compile Include="Configuration\IConsoleLogConfig.cs" />
-    <Compile Include="Configuration\IFileLogConfig.cs" />
-    <Compile Include="Configuration\IHLoggingConfig.cs" />
-    <Compile Include="Configuration\IHMessageLogConfig.cs" />
+    <Compile Include="Configuration\Interfaces\IConsoleLogConfig.cs" />
+    <Compile Include="Configuration\Interfaces\IFileLogConfig.cs" />
+    <Compile Include="Configuration\Interfaces\Base\IResultLoggingConfig.cs" />
+    <Compile Include="Configuration\Interfaces\Base\IResultMessageLogConfig.cs" />
     <Compile Include="Constants\ConfigurationDefaults.cs" />
-    <Compile Include="IHLogger.cs" />
-    <Compile Include="Loggers\Base\HLogger.cs" />
-    <Compile Include="Loggers\Base\HMessageLogger.cs" />
-    <Compile Include="Loggers\HConsoleLogger.cs" />
+    <Compile Include="IResultLogger.cs" />
+    <Compile Include="Loggers\Base\ResultLogger.cs" />
+    <Compile Include="Loggers\Base\ResultMessageLogger.cs" />
+    <Compile Include="Loggers\ConsoleLogger.cs" />
     <Compile Include="Configuration\HLoggingDecorations.cs" />
-    <Compile Include="Loggers\HFileLogger.cs" />
+    <Compile Include="Loggers\FileLogger.cs" />
     <Compile Include="Loggers\Interfaces\IConsoleLogger.cs" />
     <Compile Include="Loggers\Interfaces\IFileLogger.cs" />
     <Compile Include="Resolution\LoggingIssue.cs" />
@@ -85,6 +85,7 @@
       <LastGenOutput>Warnings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

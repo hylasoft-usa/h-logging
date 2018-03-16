@@ -1,6 +1,6 @@
 ﻿namespace Hylasoft.Logging.Loggers.Interfaces
 {
-  public interface IFileLogger : IHLogger
+  public interface IFileLogger : IResultLogger
   {
   }
 }
