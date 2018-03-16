@@ -6,6 +6,8 @@ namespace Hylasoft.Logging.Configuration.Interfaces
   {
     string LogName { get; }
 
+    string LogLocation { get; }
+
     int? MaxLogFiles { get; }
   }
 }

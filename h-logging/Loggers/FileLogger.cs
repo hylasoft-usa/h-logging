@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Hylasoft.Logging.Configuration.Interfaces;
 using Hylasoft.Logging.Loggers.Base;
 using Hylasoft.Logging.Loggers.Interfaces;
@@ -69,11 +70,12 @@ namespace Hylasoft.Logging.Loggers
 
     private Target BuildFileTarget()
     {
-      const string fileFormat = "${{basedir}}/logs/{0}.log";
       const string layout = "${message}";
 
-      var fileName = string.Format(fileFormat, ReadConfig(c => c.LogName, ConfigDefaults.LogName));
+      var location = ReadConfig(c => c.LogLocation, ConfigDefaults.LogLocation);
+      var logName = ReadConfig(c => c.LogName, ConfigDefaults.LogName);
       var maxFiles = ReadConfig(c => c.MaxLogFiles, ConfigDefaults.MaxLogFiles) ?? ConfigDefaults.MaxLogFiles;
+      var fileName = Path.Combine(location, logName);
 
       return new FileTarget(LogName)
       {

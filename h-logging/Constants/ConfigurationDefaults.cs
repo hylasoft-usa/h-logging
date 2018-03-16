@@ -18,9 +18,11 @@ namespace Hylasoft.Logging.Constants
       {
         public const string FileTargetName = "h-logging";
 
-        public const string LogName = "h-log";
+        public const string LogName = "h-log.log";
 
         public const int MaxLogFiles = 7;
+
+        public const string LogLocation = "Logs";
       }
     }
   }
