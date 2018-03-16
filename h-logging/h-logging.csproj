@@ -53,17 +53,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\HLoggingLevels.cs" />
+    <Compile Include="Configuration\Base\ResultMessageLogConfig.cs" />
+    <Compile Include="Configuration\ConsoleLogConfig.cs" />
+    <Compile Include="Configuration\FileLogConfig.cs" />
+    <Compile Include="Configuration\Types\LoggingLevels.cs" />
     <Compile Include="Configuration\Interfaces\IConsoleLogConfig.cs" />
     <Compile Include="Configuration\Interfaces\IFileLogConfig.cs" />
     <Compile Include="Configuration\Interfaces\Base\IResultLoggingConfig.cs" />
     <Compile Include="Configuration\Interfaces\Base\IResultMessageLogConfig.cs" />
+    <Compile Include="Configuration\Base\ResultLoggingConfig.cs" />
     <Compile Include="Constants\ConfigurationDefaults.cs" />
     <Compile Include="IResultLogger.cs" />
     <Compile Include="Loggers\Base\ResultLogger.cs" />
     <Compile Include="Loggers\Base\ResultMessageLogger.cs" />
     <Compile Include="Loggers\ConsoleLogger.cs" />
-    <Compile Include="Configuration\HLoggingDecorations.cs" />
+    <Compile Include="Configuration\Types\LoggingDecorations.cs" />
     <Compile Include="Loggers\FileLogger.cs" />
     <Compile Include="Loggers\Interfaces\IConsoleLogger.cs" />
     <Compile Include="Loggers\Interfaces\IFileLogger.cs" />
@@ -85,7 +89,9 @@
       <LastGenOutput>Warnings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Factories\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,5 +1,6 @@
 ﻿using Hylasoft.Logging.Configuration;
 using Hylasoft.Logging.Configuration.Interfaces;
+using Hylasoft.Logging.Configuration.Types;
 using Hylasoft.Logging.Loggers;
 using Hylasoft.Logging.Resolution;
 using Hylasoft.Resolution;
@@ -74,7 +75,7 @@ namespace Hylasoft.Logging.Console
     {
       return new LoggingConfig
       {
-        Level = HLoggingLevels.Verbose
+        Level = LoggingLevels.Verbose
       };
     }
   }

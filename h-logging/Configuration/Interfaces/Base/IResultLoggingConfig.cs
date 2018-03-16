@@ -1,8 +1,10 @@
-﻿namespace Hylasoft.Logging.Configuration.Interfaces.Base
+﻿using Hylasoft.Logging.Configuration.Types;
+
+namespace Hylasoft.Logging.Configuration.Interfaces.Base
 {
   public interface IResultLoggingConfig
   {
-    HLoggingLevels? Level { get; }
+    LoggingLevels? Level { get; }
 
     bool? VerboseOnError { get; }
   }

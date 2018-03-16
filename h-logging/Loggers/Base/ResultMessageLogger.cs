@@ -2,6 +2,7 @@
 using System.Linq;
 using Hylasoft.Logging.Configuration;
 using Hylasoft.Logging.Configuration.Interfaces.Base;
+using Hylasoft.Logging.Configuration.Types;
 using Hylasoft.Logging.Resolution;
 using Hylasoft.Logging.Resources;
 using Hylasoft.Resolution;
@@ -59,7 +60,7 @@ namespace Hylasoft.Logging.Loggers.Base
       return AppendTime(message, issue) + AppendLevel(message, issue);
     }
 
-    protected bool HasDecoration(HLoggingDecorations decoration)
+    protected bool HasDecoration(LoggingDecorations decoration)
     {
       var configuredDecorations = ReadConfig(c => c.Decorations, ConfigDefaults.Decorations);
       return (configuredDecorations & decoration) != 0x0;
@@ -67,7 +68,7 @@ namespace Hylasoft.Logging.Loggers.Base
 
     protected virtual Result AppendTime(IColourMessage message, ResultIssue issue)
     {
-      if (HasDecoration(HLoggingDecorations.OmmitDate))
+      if (HasDecoration(LoggingDecorations.OmmitDate))
         return Result.Success;
 
       var format = ReadConfig(c => c.TimestampFormat, ConfigDefaults.TimestampFormat);
@@ -78,7 +79,7 @@ namespace Hylasoft.Logging.Loggers.Base
 
     protected virtual Result AppendLevel(IColourMessage message, ResultIssue issue)
     {
-      if (HasDecoration(HLoggingDecorations.OmmitIssueLevel))
+      if (HasDecoration(LoggingDecorations.OmmitIssueLevel))
         return Result.Success;
 
       var colour = GetColour(issue.Level);
@@ -102,7 +103,7 @@ namespace Hylasoft.Logging.Loggers.Base
         IColourMessage logMessage;
         if ((logIssue = issue as LoggingIssue) == null
             || (logMessage = logIssue.ColourMessage) == null
-            || HasDecoration(HLoggingDecorations.OmmitColour))
+            || HasDecoration(LoggingDecorations.OmmitColour))
         {
           message.AppendLine(issue.Message);
           return Result.Success;

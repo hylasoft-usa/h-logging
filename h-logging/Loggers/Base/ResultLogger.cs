@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using Hylasoft.Logging.Configuration;
 using Hylasoft.Logging.Configuration.Interfaces.Base;
+using Hylasoft.Logging.Configuration.Types;
 using Hylasoft.Logging.Resolution;
 using Hylasoft.Logging.Resources;
 using Hylasoft.Resolution;
@@ -42,9 +43,9 @@ namespace Hylasoft.Logging.Loggers.Base
 
         // Get standard filter.
         var level = ReadConfig(c => c.Level, ConfigDefaults.Level);
-        var filter = level == HLoggingLevels.Standard
+        var filter = level == LoggingLevels.Standard
           ? IsStandardMessage
-          : level == HLoggingLevels.Verbose
+          : level == LoggingLevels.Verbose
             ? IsVerboseMessage
             : (Func<ResultIssue, bool>) IsQuietMessage;
 
@@ -87,9 +88,9 @@ namespace Hylasoft.Logging.Loggers.Base
 
     protected abstract Result LogIssues(ResultIssue[] issues);
 
-    protected bool IsQuiet { get { return ReadConfig(c => c.Level, ConfigDefaults.Level) == HLoggingLevels.Quiet; } }
+    protected bool IsQuiet { get { return ReadConfig(c => c.Level, ConfigDefaults.Level) == LoggingLevels.Quiet; } }
 
-    protected bool IsVerbose { get { return ReadConfig(c => c.Level, ConfigDefaults.Level) == HLoggingLevels.Verbose; } }
+    protected bool IsVerbose { get { return ReadConfig(c => c.Level, ConfigDefaults.Level) == LoggingLevels.Verbose; } }
 
     protected bool IsStandard { get { return !IsQuiet && !IsVerbose; } }
 

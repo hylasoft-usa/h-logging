@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Hylasoft.Logging.Configuration
+namespace Hylasoft.Logging.Configuration.Types
 {
   [Flags]
-  public enum HLoggingDecorations
+  public enum LoggingDecorations
   {
     All = 0x0,
     OmmitDate = 0x1,
