@@ -1,7 +1,5 @@
-﻿using Hylasoft.Logging.Configuration;
-using Hylasoft.Logging.Configuration.Interfaces;
+﻿using Hylasoft.Logging.Configuration.Interfaces;
 using Hylasoft.Logging.Configuration.Types;
-using Hylasoft.Logging.Loggers;
 using Hylasoft.Logging.Resolution;
 using Hylasoft.Resolution;
 using OmniColour;
@@ -52,7 +50,7 @@ namespace Hylasoft.Logging.Console
 
     private static IResultLogger BuildLogger()
     {
-      return new ConsoleLogger(Config, Writer);
+      return HLogging.ConsoleLogger(Config);
     }
 
     private static IResultLogger BuildFileLogger()
@@ -63,7 +61,7 @@ namespace Hylasoft.Logging.Console
         LogLocation = @"..\..\.."
       };
 
-      return new FileLogger(config);
+      return HLogging.FileLogger(config);
     }
 
     private static IColourWriter BuildWriter()

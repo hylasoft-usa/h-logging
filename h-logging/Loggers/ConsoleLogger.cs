@@ -17,7 +17,7 @@ namespace Hylasoft.Logging.Loggers
       get { return _writer; }
     }
 
-    public ConsoleLogger(IConsoleLogConfig config, IColourWriter writer)
+    protected internal ConsoleLogger(IConsoleLogConfig config, IColourWriter writer)
       : base(config)
     {
       _writer = writer;

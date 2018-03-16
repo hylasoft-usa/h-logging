@@ -28,7 +28,7 @@ namespace Hylasoft.Logging.Loggers
 
     protected string LogName { get { return _logName; } }
 
-    public FileLogger(IFileLogConfig config)
+    protected internal FileLogger(IFileLogConfig config)
       : base(config)
     {
       _logName = ConfigDefaults.FileTargetName;

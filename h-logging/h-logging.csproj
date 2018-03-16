@@ -63,6 +63,10 @@
     <Compile Include="Configuration\Interfaces\Base\IResultMessageLogConfig.cs" />
     <Compile Include="Configuration\Base\ResultLoggingConfig.cs" />
     <Compile Include="Constants\ConfigurationDefaults.cs" />
+    <Compile Include="Factories\IResultLoggingFactory.cs" />
+    <Compile Include="Factories\IResultLoggingIoc.cs" />
+    <Compile Include="Factories\ResultLoggingFactory.cs" />
+    <Compile Include="HLogging.cs" />
     <Compile Include="IResultLogger.cs" />
     <Compile Include="Loggers\Base\ResultLogger.cs" />
     <Compile Include="Loggers\Base\ResultMessageLogger.cs" />
@@ -89,9 +93,7 @@
       <LastGenOutput>Warnings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Factories\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
