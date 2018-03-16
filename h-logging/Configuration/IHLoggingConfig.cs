@@ -1,6 +1,6 @@
 ﻿namespace Hylasoft.Logging.Configuration
 {
-  public interface IHLoggingConfiguration
+  public interface IHLoggingConfig
   {
     HLoggingLevels Level { get; }
 

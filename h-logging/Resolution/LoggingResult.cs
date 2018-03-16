@@ -1,7 +1,7 @@
 ﻿using Hylasoft.Resolution;
 using OmniColour.Messages;
 
-namespace Hylasoft.Logging
+namespace Hylasoft.Logging.Resolution
 {
   public class LoggingResult : Result
   {
