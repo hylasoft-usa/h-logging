@@ -41,7 +41,7 @@ namespace Hylasoft.Logging.Loggers
       try
       {
         var contents = message.BuildRaw();
-        Log.Log(LogLevel.Info, contents.Substring(0, contents.LastIndexOf(Environment.NewLine, StringComparison.Ordinal)));
+        Log.Log(LogLevel.Info, contents);
         return Result.Success;
       }
       catch (Exception e)
@@ -81,7 +81,8 @@ namespace Hylasoft.Logging.Loggers
         Layout = layout,
         ArchiveEvery = FileArchivePeriod.Day,
         FileName = fileName,
-        MaxArchiveFiles = maxFiles
+        MaxArchiveFiles = maxFiles,
+        LineEnding = LineEndingMode.None
       };
     }
     #endregion
