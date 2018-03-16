@@ -1,6 +1,6 @@
 ﻿namespace Hylasoft.Logging.Configuration
 {
-  public interface IHFileLogConfiguration : IHLoggingConfiguration
+  public interface IHFileLogConfiguration : IHMessageLogConfiguration
   {
     string LogName { get; }
 

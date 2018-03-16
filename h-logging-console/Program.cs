@@ -53,7 +53,11 @@ namespace Hylasoft.Logging.Console
 
     private static IHLogger BuildFileLogger()
     {
-      var config = new FileConfig();
+      var config = new FileConfig
+      {
+        Level = HLoggingLevels.Verbose
+      };
+
       return new HFileLogger(config);
     }
 
