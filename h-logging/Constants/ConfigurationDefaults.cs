@@ -8,11 +8,11 @@ namespace Hylasoft.Logging.Constants
 
     public const HLoggingLevels Level = HLoggingLevels.Standard;
 
-    public const HLoggingDecorations Decorations = HLoggingDecorations.All;
-
     internal static class Messages
     {
       public const string TimestampFormat = "HH:mm:ss";
+      
+      public const HLoggingDecorations Decorations = HLoggingDecorations.All;
 
       public static class File
       {

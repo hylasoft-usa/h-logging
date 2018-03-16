@@ -93,12 +93,6 @@ namespace Hylasoft.Logging.Loggers.Base
 
     protected bool IsStandard { get { return !IsQuiet && !IsVerbose; } }
 
-    protected bool HasDecoration(HLoggingDecorations decoration)
-    {
-      var configuredDecorations = ReadConfig(c => c.Decorations, ConfigDefaults.Decorations);
-      return (configuredDecorations & decoration) != 0x0;
-    }
-
     protected TValue ReadConfig<TValue>(Func<TConfig, TValue> read, TValue defaultValue)
     {
       TValue readValue;
