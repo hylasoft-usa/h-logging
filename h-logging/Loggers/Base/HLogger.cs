@@ -16,7 +16,7 @@ namespace Hylasoft.Logging.Loggers.Base
   {
     private readonly TConfig _config;
 
-    protected TConfig Config { get { return _config; } }
+    private TConfig Config { get { return _config; } }
 
     protected HLogger(TConfig config)
     {
@@ -87,9 +87,9 @@ namespace Hylasoft.Logging.Loggers.Base
 
     protected abstract Result LogIssues(ResultIssue[] issues);
 
-    protected bool IsQuiet { get { return !ReferenceEquals(Config, null) && Config.Level == HLoggingLevels.Quiet; } }
+    protected bool IsQuiet { get { return ReadConfig(c => c.Level, ConfigDefaults.Level) == HLoggingLevels.Quiet; } }
 
-    protected bool IsVerbose { get { return !ReferenceEquals(Config, null) && Config.Level == HLoggingLevels.Verbose; } }
+    protected bool IsVerbose { get { return ReadConfig(c => c.Level, ConfigDefaults.Level) == HLoggingLevels.Verbose; } }
 
     protected bool IsStandard { get { return !IsQuiet && !IsVerbose; } }
 
