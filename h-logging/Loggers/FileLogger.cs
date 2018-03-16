@@ -18,7 +18,6 @@ namespace Hylasoft.Logging.Loggers
     private readonly LogFactory _logFactory;
     private readonly LoggingConfiguration _logConfig;
     private readonly Logger _log;
-    private readonly string _logName;
 
     protected LogFactory LogFactory { get { return _logFactory; } }
 
@@ -26,15 +25,12 @@ namespace Hylasoft.Logging.Loggers
 
     protected Logger Log { get { return _log; } }
 
-    protected string LogName { get { return _logName; } }
-
     protected internal FileLogger(IFileLogConfig config)
       : base(config)
     {
-      _logName = ConfigDefaults.FileTargetName;
       _logConfig = BuildNlogConfiguration();
       _logFactory = new LogFactory(LogConfig);
-      _log = LogFactory.GetLogger(LogName);
+      _log = LogFactory.GetLogger(Id);
     }
 
     protected override Result LogMessage(IColourMessage message)
@@ -72,12 +68,13 @@ namespace Hylasoft.Logging.Loggers
     {
       const string layout = "${message}";
 
+      var defaultName = string.Format("{0}.log", Id);
       var location = ReadConfig(c => c.LogLocation, ConfigDefaults.LogLocation);
-      var logName = ReadConfig(c => c.LogName, ConfigDefaults.LogName);
+      var logName = ReadConfig(c => c.LogName, defaultName);
       var maxFiles = ReadConfig(c => c.MaxLogFiles, ConfigDefaults.MaxLogFiles) ?? ConfigDefaults.MaxLogFiles;
       var fileName = Path.Combine(location, logName);
 
-      return new FileTarget(LogName)
+      return new FileTarget(Id)
       {
         ReplaceFileContentsOnEachWrite = false,
         Layout = layout,

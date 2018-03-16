@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Threading;
-using Hylasoft.Logging.Configuration;
 using Hylasoft.Logging.Configuration.Interfaces.Base;
 using Hylasoft.Logging.Configuration.Types;
 using Hylasoft.Logging.Resolution;
@@ -16,13 +15,17 @@ namespace Hylasoft.Logging.Loggers.Base
     where TConfig : IResultLoggingConfig
   {
     private readonly TConfig _config;
+    private readonly string _id;
 
     private TConfig Config { get { return _config; } }
 
     protected ResultLogger(TConfig config)
     {
       _config = config;
+      _id = ReadConfig(c => c.LogId, Guid.NewGuid().ToString());
     }
+
+    public string Id { get { return _id; } }
 
     public Result Log(Result result)
     {

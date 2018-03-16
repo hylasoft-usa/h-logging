@@ -1,4 +1,5 @@
-﻿using Hylasoft.Logging.Configuration.Interfaces;
+﻿using Hylasoft.Logging.Configuration;
+using Hylasoft.Logging.Configuration.Interfaces;
 using Hylasoft.Logging.Configuration.Types;
 using Hylasoft.Logging.Resolution;
 using Hylasoft.Resolution;
@@ -55,9 +56,8 @@ namespace Hylasoft.Logging.Console
 
     private static IResultLogger BuildFileLogger()
     {
-      var config = new FileConfig
+      var config = new FileLogConfig("FileLogger")
       {
-        LogName = "Console.log",
         LogLocation = @"..\..\.."
       };
 
@@ -71,7 +71,7 @@ namespace Hylasoft.Logging.Console
 
     private static IConsoleLogConfig BuildConfig()
     {
-      return new LoggingConfig
+      return new ConsoleLogConfig("ConsoleLogger")
       {
         Level = LoggingLevels.Verbose
       };

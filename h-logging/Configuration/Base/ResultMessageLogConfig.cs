@@ -10,7 +10,7 @@ namespace Hylasoft.Logging.Configuration.Base
 
     public LoggingDecorations? Decorations { get; set; }
 
-    protected ResultMessageLogConfig()
+    protected ResultMessageLogConfig(string id = null) : base(id)
     {
       TimestampFormat = ConfigDefaults.TimestampFormat;
       Decorations = ConfigDefaults.Decorations;
