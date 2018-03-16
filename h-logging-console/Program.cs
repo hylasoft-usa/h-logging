@@ -56,7 +56,11 @@ namespace Hylasoft.Logging.Console
 
     private static IResultLogger BuildFileLogger()
     {
-      var config = new FileConfig();
+      var config = new FileConfig
+      {
+        LogName = "Console.log",
+        LogLocation = @"..\..\.."
+      };
 
       return new FileLogger(config);
     }

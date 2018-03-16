@@ -3,5 +3,7 @@
   public interface IResultMessageLogConfig : IResultLoggingConfig
   {
     string TimestampFormat { get; }
+
+    HLoggingDecorations? Decorations { get; }
   }
 }

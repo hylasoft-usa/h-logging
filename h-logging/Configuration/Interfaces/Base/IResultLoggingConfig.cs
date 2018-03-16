@@ -4,8 +4,6 @@
   {
     HLoggingLevels? Level { get; }
 
-    HLoggingDecorations? Decorations { get; }
-
     bool? VerboseOnError { get; }
   }
 } 

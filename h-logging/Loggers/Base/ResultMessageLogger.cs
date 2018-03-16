@@ -59,6 +59,12 @@ namespace Hylasoft.Logging.Loggers.Base
       return AppendTime(message, issue) + AppendLevel(message, issue);
     }
 
+    protected bool HasDecoration(HLoggingDecorations decoration)
+    {
+      var configuredDecorations = ReadConfig(c => c.Decorations, ConfigDefaults.Decorations);
+      return (configuredDecorations & decoration) != 0x0;
+    }
+
     protected virtual Result AppendTime(IColourMessage message, ResultIssue issue)
     {
       if (HasDecoration(HLoggingDecorations.OmmitDate))

@@ -9,6 +9,7 @@ namespace Hylasoft.Logging.Console
     public HLoggingDecorations? Decorations { get; set; }
     public bool? VerboseOnError { get; set; }
     public string LogName { get; set; }
+    public string LogLocation { get; set; }
     public int? MaxLogFiles { get; set; }
     public string TimestampFormat { get; set; }
   }
