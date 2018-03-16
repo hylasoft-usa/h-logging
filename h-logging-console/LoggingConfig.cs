@@ -1,13 +1,14 @@
 ﻿using Hylasoft.Logging.Configuration;
 using Hylasoft.Logging.Configuration.Interfaces;
+using Hylasoft.Logging.Configuration.Types;
 
 namespace Hylasoft.Logging.Console
 {
   public class LoggingConfig : IConsoleLogConfig
   {
-    public HLoggingLevels? Level { get; set; }
+    public LoggingLevels? Level { get; set; }
 
-    public HLoggingDecorations? Decorations { get; set; }
+    public LoggingDecorations? Decorations { get; set; }
     
     public bool? VerboseOnError { get; set; }
 
@@ -15,9 +16,9 @@ namespace Hylasoft.Logging.Console
 
     public LoggingConfig()
     {
-      Level = HLoggingLevels.Standard;
+      Level = LoggingLevels.Standard;
       TimestampFormat = null;
-      Decorations = HLoggingDecorations.All;
+      Decorations = LoggingDecorations.All;
     }
   }
 }

@@ -1,4 +1,5 @@
 ﻿using Hylasoft.Logging.Configuration;
+using Hylasoft.Logging.Configuration.Types;
 
 namespace Hylasoft.Logging.Constants
 {
@@ -6,13 +7,13 @@ namespace Hylasoft.Logging.Constants
   {
     public const bool VerboseOnError = true;
 
-    public const HLoggingLevels Level = HLoggingLevels.Standard;
+    public const LoggingLevels Level = LoggingLevels.Standard;
 
     internal static class Messages
     {
       public const string TimestampFormat = "HH:mm:ss";
       
-      public const HLoggingDecorations Decorations = HLoggingDecorations.All;
+      public const LoggingDecorations Decorations = LoggingDecorations.All;
 
       public static class File
       {
