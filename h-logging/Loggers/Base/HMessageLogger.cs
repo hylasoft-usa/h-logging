@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Hylasoft.Logging.Configuration;
+using Hylasoft.Logging.Configuration.Base;
 using Hylasoft.Logging.Resolution;
 using Hylasoft.Logging.Resources;
 using Hylasoft.Resolution;

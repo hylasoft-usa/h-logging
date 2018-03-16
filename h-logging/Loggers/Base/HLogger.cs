@@ -2,9 +2,12 @@
 using System.Linq;
 using System.Threading;
 using Hylasoft.Logging.Configuration;
+using Hylasoft.Logging.Configuration.Base;
 using Hylasoft.Logging.Resolution;
 using Hylasoft.Logging.Resources;
 using Hylasoft.Resolution;
+
+using ConfigDefaults = Hylasoft.Logging.Constants.ConfigurationDefaults;
 
 namespace Hylasoft.Logging.Loggers.Base
 {
@@ -37,16 +40,21 @@ namespace Hylasoft.Logging.Loggers.Base
         if (result == null)
           return Result.SingleWarning(Warnings.NothingToLog);
 
-        var level = Config.Level;
+        // Get standard filter.
+        var level = ReadConfig(c => c.Level, ConfigDefaults.Level);
         var filter = level == HLoggingLevels.Standard
           ? IsStandardMessage
           : level == HLoggingLevels.Verbose
             ? IsVerboseMessage
             : (Func<ResultIssue, bool>) IsQuietMessage;
 
+        // Implement VerboseOnError.
+        var verboseOnError = ReadConfig(c => c.VerboseOnError, ConfigDefaults.VerboseOnError) ?? ConfigDefaults.VerboseOnError;
+        if (verboseOnError && !result)
+          filter = IsVerboseMessage;
+
         var message = result.Issues.Where(filter).ToArray();
         return result + log(message);
-
       }
       catch (Exception e)
       {
@@ -66,7 +74,7 @@ namespace Hylasoft.Logging.Loggers.Base
 
     protected virtual bool IsQuietMessage(ResultIssue issue)
     {
-      return IsVerboseMessage(issue) && issue is LoggingIssue;
+      return IsVerboseMessage(issue) && (issue is LoggingIssue || issue.Level >= ResultIssueLevels.Error);
     }
 
     protected Result LogAsync(ResultIssue[] issues)
@@ -87,7 +95,8 @@ namespace Hylasoft.Logging.Loggers.Base
 
     protected bool HasDecoration(HLoggingDecorations decoration)
     {
-      return !ReferenceEquals(Config, null) && (Config.Decorations & decoration) != 0x0;
+      var configuredDecorations = ReadConfig(c => c.Decorations, ConfigDefaults.Decorations);
+      return (configuredDecorations & decoration) != 0x0;
     }
 
     protected TValue ReadConfig<TValue>(Func<TConfig, TValue> read, TValue defaultValue)

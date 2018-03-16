@@ -22,7 +22,7 @@ namespace Hylasoft.Logging.Console
 
     private static IConsoleLogConfig Config { get { return _config ?? (_config = BuildConfig()); } }
 
-    static void Main(string[] args)
+    static void Main()
     {
       var test = Result.SingleTrace("Test trace.");
       test += Result.SingleDebug("Test debug.");
@@ -42,6 +42,7 @@ namespace Hylasoft.Logging.Console
 
       inline += LoggingResult.SingleInfo(0, inlineMessage);
       inline += Result.SingleWarning("There it was.");
+      inline += Result.SingleTrace("And there it went.");
 
       Logger.LogSynchronous(inline);
       FileLogger.LogSynchronous(inline);
@@ -54,10 +55,7 @@ namespace Hylasoft.Logging.Console
 
     private static IHLogger BuildFileLogger()
     {
-      var config = new FileConfig
-      {
-        Level = HLoggingLevels.Verbose
-      };
+      var config = new FileConfig();
 
       return new HFileLogger(config);
     }

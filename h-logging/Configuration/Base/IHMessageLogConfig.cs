@@ -1,4 +1,4 @@
-﻿namespace Hylasoft.Logging.Configuration
+﻿namespace Hylasoft.Logging.Configuration.Base
 {
   public interface IHMessageLogConfig : IHLoggingConfig
   {
