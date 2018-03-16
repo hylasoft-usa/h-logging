@@ -1,4 +1,5 @@
 ﻿using Hylasoft.Logging.Configuration;
+using Hylasoft.Logging.Configuration.Interfaces;
 
 namespace Hylasoft.Logging.Console
 {

@@ -2,7 +2,7 @@
 
 namespace Hylasoft.Logging
 {
-  public interface IHLogger
+  public interface IResultLogger
   {
     Result Log(Result result);
 

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading;
 using Hylasoft.Logging.Configuration;
-using Hylasoft.Logging.Configuration.Base;
+using Hylasoft.Logging.Configuration.Interfaces.Base;
 using Hylasoft.Logging.Resolution;
 using Hylasoft.Logging.Resources;
 using Hylasoft.Resolution;
@@ -11,14 +11,14 @@ using ConfigDefaults = Hylasoft.Logging.Constants.ConfigurationDefaults;
 
 namespace Hylasoft.Logging.Loggers.Base
 {
-  public abstract class HLogger<TConfig> : IHLogger
-    where TConfig : IHLoggingConfig
+  public abstract class ResultLogger<TConfig> : IResultLogger
+    where TConfig : IResultLoggingConfig
   {
     private readonly TConfig _config;
 
     private TConfig Config { get { return _config; } }
 
-    protected HLogger(TConfig config)
+    protected ResultLogger(TConfig config)
     {
       _config = config;
     }
