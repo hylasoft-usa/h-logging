@@ -59,11 +59,10 @@ namespace Hylasoft.Logging.Loggers.Base
         if (result == null)
           return Result.SingleWarning(Warnings.NothingToLog);
 
-        // Get standard filter.
-        var level = ReadConfig(c => c.Level, ConfigDefaults.Level);
-        var filter = level == LoggingLevels.Standard
+        // Get appropriate filter.
+        var filter = IsStandard
           ? IsStandardMessage
-          : level == LoggingLevels.Verbose
+          : IsVerbose
             ? IsVerboseMessage
             : (Func<ResultIssue, bool>) IsQuietMessage;
 
@@ -93,7 +92,7 @@ namespace Hylasoft.Logging.Loggers.Base
 
     protected virtual bool IsQuietMessage(ResultIssue issue)
     {
-      return IsVerboseMessage(issue) && (issue is LoggingIssue || issue.Level >= ResultIssueLevels.Error);
+      return IsVerboseMessage(issue) && (issue is LoggingIssue || issue.Level >= ResultIssueLevels.Warning);
     }
 
     protected Result LogAsync(ResultIssue[] issues)
@@ -108,7 +107,9 @@ namespace Hylasoft.Logging.Loggers.Base
 
     protected bool IsVerbose { get { return ReadConfig(c => c.Level, ConfigDefaults.Level) == LoggingLevels.Verbose; } }
 
-    protected bool IsStandard { get { return !IsVerbose; } }
+    protected bool IsQuiet { get { return ReadConfig(c => c.Level, ConfigDefaults.Level) == LoggingLevels.Quiet; } }
+
+    protected bool IsStandard { get { return !IsVerbose && !IsQuiet; } }
 
     protected TValue ReadConfig<TValue>(Func<TConfig, TValue> read, TValue defaultValue)
     {
