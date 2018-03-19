@@ -39,7 +39,7 @@ namespace Hylasoft.Logging.Console
       var inlineMessage = Writer.Message;
 
       inlineMessage.AppendFormat(OmniColours.BrightWhite, "{0,-15}", "This")
-        .Append("is a ").Append(OmniColours.BrightCyan, "message").AppendLine(" for the masses.");
+        .Append("is a ").Append(OmniColours.BrightCyan, "message").Append(" for the masses.");
 
       inline += LoggingResult.SingleInfo(inlineMessage);
       inline += Result.SingleWarning("There it was.");

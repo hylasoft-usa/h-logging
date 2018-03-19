@@ -113,7 +113,7 @@ namespace Hylasoft.Logging.Loggers.Base
           return Result.Success;
         }
 
-        message.Append(logMessage);
+        message.Append(logMessage).Break();
         return Result.Success;
       }
       catch (Exception e)
