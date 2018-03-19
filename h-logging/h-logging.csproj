@@ -56,6 +56,7 @@
     <Compile Include="Configuration\Base\ResultMessageLogConfig.cs" />
     <Compile Include="Configuration\ConsoleLogConfig.cs" />
     <Compile Include="Configuration\FileLogConfig.cs" />
+    <Compile Include="Configuration\LoggingCollectionConfig.cs" />
     <Compile Include="Configuration\Types\LoggingLevels.cs" />
     <Compile Include="Configuration\Interfaces\IConsoleLogConfig.cs" />
     <Compile Include="Configuration\Interfaces\IFileLogConfig.cs" />

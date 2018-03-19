@@ -1,6 +1,6 @@
 ﻿using Hylasoft.Logging.Configuration;
-using Hylasoft.Logging.Configuration.Interfaces;
 using Hylasoft.Logging.Configuration.Types;
+using Hylasoft.Logging.Loggers.Interfaces;
 using Hylasoft.Logging.Resolution;
 using Hylasoft.Resolution;
 using OmniColour;
@@ -10,18 +10,18 @@ namespace Hylasoft.Logging.Console
 {
   class Program
   {
-    private static IResultLogger _logger;
+    private static ILoggingCollection _logger;
     private static IResultLogger _fileLogger;
+    private static IResultLogger _consoleLogger;
     private static IColourWriter _writer;
-    private static IConsoleLogConfig _config;
 
-    private static IResultLogger Logger { get { return _logger ?? (_logger = BuildLogger()); } }
+    private static ILoggingCollection Logger { get { return _logger ?? (_logger = BuildLogger()); } }
 
     private static IResultLogger FileLogger { get { return _fileLogger ?? (_fileLogger = BuildFileLogger()); } }
 
-    private static IColourWriter Writer { get { return _writer ?? (_writer = BuildWriter()); } }
+    private static IResultLogger ConsoleLogger { get { return _consoleLogger ?? (_consoleLogger = BuildConsoleLogger()); } }
 
-    private static IConsoleLogConfig Config { get { return _config ?? (_config = BuildConfig()); } }
+    private static IColourWriter Writer { get { return _writer ?? (_writer = BuildWriter()); } }
 
     static void Main()
     {
@@ -33,7 +33,7 @@ namespace Hylasoft.Logging.Console
       test += Result.SingleFatal("Test fatal.");
 
       Logger.LogSynchronous(test);
-      FileLogger.LogSynchronous(test);
+      Logger.Remove("ConsoleLogger");
 
       var inline = Result.SingleInfo("Woah.");
       var inlineMessage = Writer.Message;
@@ -46,12 +46,22 @@ namespace Hylasoft.Logging.Console
       inline += Result.SingleTrace("And there it went.");
 
       Logger.LogSynchronous(inline);
-      FileLogger.LogSynchronous(inline);
     }
 
-    private static IResultLogger BuildLogger()
+    private static ILoggingCollection BuildLogger()
     {
-      return HLogging.ConsoleLogger(Config);
+      var config = new LoggingCollectionConfig();
+      return HLogging.Collection(config, ConsoleLogger, FileLogger);
+    }
+
+    private static IResultLogger BuildConsoleLogger()
+    {
+      var config = new ConsoleLogConfig("ConsoleLogger")
+      {
+        Level = LoggingLevels.Verbose
+      };
+
+      return HLogging.ConsoleLogger(config);
     }
 
     private static IResultLogger BuildFileLogger()
@@ -67,14 +77,6 @@ namespace Hylasoft.Logging.Console
     private static IColourWriter BuildWriter()
     {
       return Colour.Writer;
-    }
-
-    private static IConsoleLogConfig BuildConfig()
-    {
-      return new ConsoleLogConfig("ConsoleLogger")
-      {
-        Level = LoggingLevels.Verbose
-      };
     }
   }
 }

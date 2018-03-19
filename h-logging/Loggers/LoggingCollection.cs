@@ -19,7 +19,7 @@ namespace Hylasoft.Logging.Loggers
 
     protected ICollection<IResultLogger> Loggers { get { return LoggerSet.Values; } } 
 
-    public LoggingCollection(IResultLoggingConfig config = null) : base(config)
+    protected internal LoggingCollection(IResultLoggingConfig config) : base(config)
     {
       _loggers = new Dictionary<string, IResultLogger>();
     }
