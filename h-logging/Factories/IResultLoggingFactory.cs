@@ -1,6 +1,7 @@
 ﻿using Hylasoft.Logging.Configuration.Interfaces;
 using Hylasoft.Logging.Configuration.Interfaces.Base;
 using Hylasoft.Logging.Loggers.Interfaces;
+using OmniColour.Messages;
 
 namespace Hylasoft.Logging.Factories
 {
@@ -9,6 +10,11 @@ namespace Hylasoft.Logging.Factories
   /// </summary>
   public interface IResultLoggingFactory
   {
+    /// <summary>
+    /// Constructs an isntance of an IColourMessage.
+    /// </summary>
+    IColourMessage BuildMessage();
+
     /// <summary>
     /// Constructs a file logger.
     /// </summary>

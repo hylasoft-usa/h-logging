@@ -41,9 +41,11 @@ namespace Hylasoft.Logging.Console
       inlineMessage.AppendFormat(OmniColours.BrightWhite, "{0,-15}", "This")
         .Append("is a ").Append(OmniColours.BrightCyan, "message").AppendLine(" for the masses.");
 
-      inline += LoggingResult.SingleInfo(0, inlineMessage);
+      inline += LoggingResult.SingleInfo(inlineMessage);
       inline += Result.SingleWarning("There it was.");
-      inline += Result.SingleTrace("And there it went.");
+      inline += Result.SingleInfo("And there it went.");
+
+      inline += LoggingResult.SingleInfo("And a single logging message.");
 
       Logger.LogSynchronous(inline);
     }
@@ -68,7 +70,8 @@ namespace Hylasoft.Logging.Console
     {
       var config = new FileLogConfig("FileLogger")
       {
-        LogLocation = @"..\..\.."
+        LogLocation = @"..\..\..",
+        Level = LoggingLevels.Standard
       };
 
       return HLogging.FileLogger(config);
