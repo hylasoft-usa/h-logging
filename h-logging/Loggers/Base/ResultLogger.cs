@@ -11,6 +11,9 @@ using ConfigDefaults = Hylasoft.Logging.Constants.ConfigurationDefaults;
 
 namespace Hylasoft.Logging.Loggers.Base
 {
+  /// <summary>
+  /// A class that is able to log Results in some way.
+  /// </summary>
   public abstract class ResultLogger<TConfig> : IResultLogger
     where TConfig : IResultLoggingConfig
   {
@@ -25,13 +28,25 @@ namespace Hylasoft.Logging.Loggers.Base
       _id = ReadConfig(c => c.LogId, Guid.NewGuid().ToString());
     }
 
+    /// <summary>
+    /// The unique id associated with an instance of the logger.
+    /// Will be set to a GUID, if left unspecified.
+    /// </summary>
     public string Id { get { return _id; } }
 
+    /// <summary>
+    /// Logs a Result in a new thread.
+    /// </summary>
+    /// <param name="result">Result to be logged.</param>
     public Result Log(Result result)
     {
       return Log(result, LogAsync);
     }
 
+    /// <summary>
+    /// Logs a Result in the current thread.
+    /// </summary>
+    /// <param name="result">Result to be logged.</param>
     public Result LogSynchronous(Result result)
     {
       return Log(result, LogIssues);
@@ -91,11 +106,9 @@ namespace Hylasoft.Logging.Loggers.Base
 
     protected abstract Result LogIssues(ResultIssue[] issues);
 
-    protected bool IsQuiet { get { return ReadConfig(c => c.Level, ConfigDefaults.Level) == LoggingLevels.Quiet; } }
-
     protected bool IsVerbose { get { return ReadConfig(c => c.Level, ConfigDefaults.Level) == LoggingLevels.Verbose; } }
 
-    protected bool IsStandard { get { return !IsQuiet && !IsVerbose; } }
+    protected bool IsStandard { get { return !IsVerbose; } }
 
     protected TValue ReadConfig<TValue>(Func<TConfig, TValue> read, TValue defaultValue)
     {

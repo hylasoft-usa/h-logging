@@ -13,6 +13,9 @@ using ConfigDefaults = Hylasoft.Logging.Constants.ConfigurationDefaults.Messages
 
 namespace Hylasoft.Logging.Loggers
 {
+  /// <summary>
+  /// A logger that writes to files.
+  /// </summary>
   public class FileLogger : ResultMessageLogger<IFileLogConfig>, IFileLogger
   {
     private readonly LogFactory _logFactory;

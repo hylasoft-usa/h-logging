@@ -1,5 +1,4 @@
-﻿using Hylasoft.Logging.Configuration;
-using Hylasoft.Logging.Configuration.Types;
+﻿using Hylasoft.Logging.Configuration.Types;
 
 namespace Hylasoft.Logging.Constants
 {

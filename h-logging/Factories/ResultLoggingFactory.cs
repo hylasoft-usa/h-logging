@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Hylasoft.Logging.Configuration.Interfaces;
 using Hylasoft.Logging.Configuration.Interfaces.Base;
 using Hylasoft.Logging.Loggers;

@@ -11,6 +11,9 @@ using Hylasoft.Resolution;
 
 namespace Hylasoft.Logging.Loggers
 {
+  /// <summary>
+  /// A collection of logs, that allows for printing to multiple sources.
+  /// </summary>
   public class LoggingCollection : ResultLogger<IResultLoggingConfig>, ILoggingCollection
   {
     private readonly Dictionary<string, IResultLogger> _loggers;
@@ -39,11 +42,19 @@ namespace Hylasoft.Logging.Loggers
       return GetEnumerator();
     }
 
+    /// <summary>
+    /// Adds a variable number of loggers to the collection.
+    /// </summary>
+    /// <param name="loggers">Loggers to add.</param>
     public Result Add(params IResultLogger[] loggers)
     {
       return Add((IEnumerable<IResultLogger>) loggers);
     }
 
+    /// <summary>
+    /// Adds an enumeration of loggers to the collection.
+    /// </summary>
+    /// <param name="loggers">Loggers to add.</param>
     public Result Add(IEnumerable<IResultLogger> loggers)
     {
       return loggers == null
@@ -51,6 +62,10 @@ namespace Hylasoft.Logging.Loggers
         : loggers.Aggregate(Result.Success, (r, l) => Add(l));
     }
 
+    /// <summary>
+    /// Adds a single logger to the collection.
+    /// </summary>
+    /// <param name="logger">Logger to add.</param>
     public Result Add(IResultLogger logger)
     {
       if (ReferenceEquals(logger, null))
@@ -71,6 +86,10 @@ namespace Hylasoft.Logging.Loggers
       }
     }
 
+    /// <summary>
+    /// Removes a logger from the collection.
+    /// </summary>
+    /// <param name="logId">Id of the logger to remove.</param>
     public Result Remove(string logId)
     {
       try
