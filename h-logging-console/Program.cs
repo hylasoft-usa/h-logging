@@ -71,7 +71,7 @@ namespace Hylasoft.Logging.Console
       var config = new FileLogConfig("FileLogger")
       {
         LogLocation = @"..\..\..",
-        Level = LoggingLevels.Quiet
+        Level = LoggingLevels.Quiet 
       };
 
       return HLogging.FileLogger(config);
