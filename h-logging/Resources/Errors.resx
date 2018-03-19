@@ -117,13 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LoggerAlreadyExists" xml:space="preserve">
-    <value>Logger '{0}' already belongs to the current logging collection.</value>
-  </data>
-  <data name="LoggerDoesNotExist" xml:space="preserve">
-    <value>The current logging collection does not container logger '{0}'.</value>
-  </data>
-  <data name="NothingToLog" xml:space="preserve">
-    <value>Nothing to log.</value>
+  <data name="AddingNullLoggerToCollection" xml:space="preserve">
+    <value>Null value used, when attempting to add a logger.</value>
   </data>
 </root>

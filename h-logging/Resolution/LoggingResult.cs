@@ -1,4 +1,6 @@
-﻿using Hylasoft.Resolution;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Hylasoft.Resolution;
 using OmniColour.Messages;
 
 namespace Hylasoft.Logging.Resolution
@@ -7,6 +9,15 @@ namespace Hylasoft.Logging.Resolution
   {
     protected LoggingResult(ResultIssue issue) : base(issue)
     {
+    }
+
+    protected LoggingResult(IEnumerable<ResultIssue> issues) : base(issues)
+    {
+    }
+
+    public static Result FromIssues(IEnumerable<ResultIssue> issues)
+    {
+      return new LoggingResult(issues);
     }
 
     public static Result SingleTrace(long issueCode, IColourMessage message)

@@ -13,9 +13,9 @@ namespace Hylasoft.Logging.Configuration
 
     public int? MaxLogFiles { get; set; }
 
-    public FileLogConfig()
+    public FileLogConfig(string id = null) : base(id)
     {
-      LogName = ConfigDefaults.LogName;
+      LogName = string.Format("{0}.log", LogId);
       LogLocation = ConfigDefaults.LogLocation;
       MaxLogFiles = ConfigDefaults.MaxLogFiles;
     }

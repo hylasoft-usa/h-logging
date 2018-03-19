@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Hylasoft.Logging.Configuration.Interfaces;
+using Hylasoft.Logging.Configuration.Interfaces.Base;
 using Hylasoft.Logging.Loggers;
 using Hylasoft.Logging.Loggers.Interfaces;
 using OmniColour;
@@ -14,6 +16,7 @@ namespace Hylasoft.Logging.Factories
       ColourWriter = BuildColourWriterDefault;
       ConsoleLogger = BuildConsoleLoggerDefault;
       FileLogger = BuildFileLoggerDefault;
+      LoggingCollection = BuildLoggingCollectionDefault;
     }
 
     #region IResultLoggingFactory Implementation
@@ -26,6 +29,11 @@ namespace Hylasoft.Logging.Factories
     {
       return ConsoleLogger(configuration);
     }
+
+    public ILoggingCollection BuildCollection(IResultLoggingConfig configuration)
+    {
+      return LoggingCollection(configuration);
+    }
     #endregion
 
     #region IResoltLoggingIoc Implementation
@@ -34,6 +42,8 @@ namespace Hylasoft.Logging.Factories
     public Func<IConsoleLogConfig, IConsoleLogger> ConsoleLogger { set; private get; }
 
     public Func<IFileLogConfig, IFileLogger> FileLogger { set; private get; }
+
+    public Func<IResultLoggingConfig, ILoggingCollection> LoggingCollection { set; private get; }
     #endregion
 
     #region Constructors
@@ -50,6 +60,11 @@ namespace Hylasoft.Logging.Factories
     protected IFileLogger BuildFileLoggerDefault(IFileLogConfig configuration)
     {
       return new FileLogger(configuration);
+    }
+
+    protected ILoggingCollection BuildLoggingCollectionDefault(IResultLoggingConfig configuration)
+    {
+      return new LoggingCollection(configuration);
     }
     #endregion
   }

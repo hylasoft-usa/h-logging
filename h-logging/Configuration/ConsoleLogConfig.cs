@@ -5,5 +5,8 @@ namespace Hylasoft.Logging.Configuration
 {
   public class ConsoleLogConfig : ResultMessageLogConfig, IConsoleLogConfig
   {
+    public ConsoleLogConfig(string id = null) : base(id)
+    {
+    }
   }
 }

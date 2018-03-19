@@ -22,14 +22,14 @@ namespace Hylasoft.Logging.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Warnings {
+    internal class Errors {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Warnings() {
+        internal Errors() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Hylasoft.Logging.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hylasoft.Logging.Resources.Warnings", typeof(Warnings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hylasoft.Logging.Resources.Errors", typeof(Errors).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +61,11 @@ namespace Hylasoft.Logging.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Logger &apos;{0}&apos; already belongs to the current logging collection..
+        ///   Looks up a localized string similar to Null value used, when attempting to add a logger..
         /// </summary>
-        internal static string LoggerAlreadyExists {
+        internal static string AddingNullLoggerToCollection {
             get {
-                return ResourceManager.GetString("LoggerAlreadyExists", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The current logging collection does not container logger &apos;{0}&apos;..
-        /// </summary>
-        internal static string LoggerDoesNotExist {
-            get {
-                return ResourceManager.GetString("LoggerDoesNotExist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nothing to log..
-        /// </summary>
-        internal static string NothingToLog {
-            get {
-                return ResourceManager.GetString("NothingToLog", resourceCulture);
+                return ResourceManager.GetString("AddingNullLoggerToCollection", resourceCulture);
             }
         }
     }

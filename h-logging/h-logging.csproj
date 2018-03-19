@@ -56,6 +56,7 @@
     <Compile Include="Configuration\Base\ResultMessageLogConfig.cs" />
     <Compile Include="Configuration\ConsoleLogConfig.cs" />
     <Compile Include="Configuration\FileLogConfig.cs" />
+    <Compile Include="Configuration\LoggingCollectionConfig.cs" />
     <Compile Include="Configuration\Types\LoggingLevels.cs" />
     <Compile Include="Configuration\Interfaces\IConsoleLogConfig.cs" />
     <Compile Include="Configuration\Interfaces\IFileLogConfig.cs" />
@@ -75,9 +76,16 @@
     <Compile Include="Loggers\FileLogger.cs" />
     <Compile Include="Loggers\Interfaces\IConsoleLogger.cs" />
     <Compile Include="Loggers\Interfaces\IFileLogger.cs" />
+    <Compile Include="Loggers\Interfaces\ILoggingCollection.cs" />
+    <Compile Include="Loggers\LoggingCollection.cs" />
     <Compile Include="Resolution\LoggingIssue.cs" />
     <Compile Include="Resolution\LoggingResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Errors.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Errors.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Warnings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -88,6 +96,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Errors.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Errors.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Warnings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Warnings.Designer.cs</LastGenOutput>
