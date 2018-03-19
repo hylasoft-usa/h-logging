@@ -26,7 +26,7 @@ namespace Hylasoft.Logging.Loggers
 
     protected LoggingConfiguration LogConfig { get { return _logConfig; } }
 
-    protected Logger Log { get { return _log; } }
+    protected Logger NLog { get { return _log; } }
 
     protected internal FileLogger(IFileLogConfig config)
       : base(config)
@@ -41,7 +41,7 @@ namespace Hylasoft.Logging.Loggers
       try
       {
         var contents = message.BuildRaw();
-        Log.Log(LogLevel.Info, contents);
+        NLog.Log(LogLevel.Info, contents);
         return Result.Success;
       }
       catch (Exception e)
