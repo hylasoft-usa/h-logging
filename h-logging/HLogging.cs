@@ -6,6 +6,7 @@ using Hylasoft.Logging.Factories;
 using Hylasoft.Logging.Loggers.Interfaces;
 using Hylasoft.Resolution;
 using Hylasoft.Resolution.Extensions;
+using OmniColour.Messages;
 
 namespace Hylasoft.Logging
 {
@@ -36,6 +37,11 @@ namespace Hylasoft.Logging
     public static IFileLogger FileLogger(IFileLogConfig configuration)
     {
       return Factory.BuildFileLogger(configuration);
+    }
+
+    public static IColourMessage Message
+    {
+      get { return Factory.BuildMessage(); }
     }
 
     public static IConsoleLogger ConsoleLogger(IConsoleLogConfig configuration)

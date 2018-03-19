@@ -2,6 +2,7 @@
 using Hylasoft.Logging.Configuration.Interfaces;
 using Hylasoft.Logging.Configuration.Interfaces.Base;
 using Hylasoft.Logging.Loggers.Interfaces;
+using OmniColour.Messages;
 using OmniColour.Writers;
 
 namespace Hylasoft.Logging.Factories
@@ -27,8 +28,13 @@ namespace Hylasoft.Logging.Factories
     Func<IFileLogConfig, IFileLogger> FileLogger { set; }
 
     /// <summary>
-    /// Defines the constructor for build ILoggingCollections.
+    /// Defines the constructor for building ILoggingCollections.
     /// </summary>
-    Func<IResultLoggingConfig, ILoggingCollection> LoggingCollection { set; } 
+    Func<IResultLoggingConfig, ILoggingCollection> LoggingCollection { set; }
+
+    /// <summary>
+    /// Defines the cunstructor for building IColourMessages.
+    /// </summary>
+    Func<IColourMessage> Message { set; } 
   }
 }
