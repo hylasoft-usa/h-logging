@@ -12,6 +12,10 @@ using ConfigDefaults = Hylasoft.Logging.Constants.ConfigurationDefaults.Messages
 
 namespace Hylasoft.Logging.Loggers.Base
 {
+  /// <summary>
+  /// A class that logs Results as text, in some manner.
+  /// Results are translated to a single IColourMessage, for logging.
+  /// </summary>
   public abstract class ResultMessageLogger<TConfig> : ResultLogger<TConfig>
     where TConfig : IResultMessageLogConfig
   {
@@ -34,6 +38,10 @@ namespace Hylasoft.Logging.Loggers.Base
       return log + LogMessage(message);
     }
 
+    /// <summary>
+    /// Logs an IColourMessage.
+    /// </summary>
+    /// <param name="message">Message to be logged.</param>
     protected abstract Result LogMessage(IColourMessage message);
 
     protected virtual Result BuildResultHeader(out IColourMessage message)
@@ -53,9 +61,6 @@ namespace Hylasoft.Logging.Loggers.Base
 
     protected virtual Result AppendIssuePrefix(IColourMessage message, ResultIssue issue)
     {
-      // Don't add prefix to quiet messages.
-      if (IsQuiet) return Result.Success;
-
       return AppendTime(message, issue) + AppendLevel(message, issue);
     }
 

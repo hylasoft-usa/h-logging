@@ -3,9 +3,14 @@ using OmniColour.Messages;
 
 namespace Hylasoft.Logging.Resolution
 {
-  public class LoggingIssue : ResultIssue
+  /// <summary>
+  /// A specialized result issue that can store an IColourMessage.
+  /// </summary>
+  internal class LoggingIssue : ResultIssue
   {
     private readonly IColourMessage _colourMessage;
+
+    public const long NonIssueCode = 0;
 
     public IColourMessage ColourMessage { get { return _colourMessage; } }
 

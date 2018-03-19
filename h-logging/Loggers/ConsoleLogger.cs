@@ -8,6 +8,9 @@ using OmniColour.Writers;
 
 namespace Hylasoft.Logging.Loggers
 {
+  /// <summary>
+  /// A logger that writes to consoles.
+  /// </summary>
   public class ConsoleLogger : ResultMessageLogger<IConsoleLogConfig>, IConsoleLogger
   {
     private readonly IColourWriter _writer;
